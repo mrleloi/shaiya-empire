@@ -1,0 +1,119 @@
+.s1 {
+  background: url(../images/s1.png) no-repeat scroll 0 0 transparent;
+  width: 137px;
+  height: 51px;
+  position: absolute;
+  left: 50%;
+  margin-left: -490px;
+  top: 358px;
+  z-index: 1;
+  pointer-events: none;
+}
+/*
+.s2 {
+  background: url(s2.png) no-repeat scroll 0 0 transparent;
+  width: 58px;
+  height: 30px;
+  position: absolute;
+  left: 50%;
+  margin-left: -226px;
+  top: 163px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.s3 {
+  background: url(s3.png) no-repeat scroll 0 0 transparent;
+  width: 58px;
+  height: 30px;
+  position: absolute;
+  left: 50%;
+  margin-left: 185px;
+  top: 224px;
+  z-index: 1;
+  pointer-events: none;
+}
+*/
+.s4 {
+  background: url(../images/s4.png) no-repeat scroll 0 0 transparent;
+  width: 124px;
+  height: 17px;
+  position: absolute;
+  left: 50%;
+  margin-left: -495px;
+  top: 286px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.s5 {
+  background: url(../images/s5.png) no-repeat scroll 0 0 transparent;
+  width: 58px;
+  height: 30px;
+  position: absolute;
+  left: 50%;
+  margin-left: -500px;
+  top: 450px;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.s6 {
+  background: url(../images/s6.png) no-repeat scroll 0 0 transparent;
+  width: 304px;
+  height: 130px;
+  position: absolute;
+  left: 50%;
+  margin-left: 55px;
+  top: 287px;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.s7 {
+  background: url(../images/s7.png) no-repeat scroll 0 0 transparent;
+  width: 80px;
+  height: 96px;
+  position: absolute;
+  left: 50%;
+  margin-left: 106px;
+  top: 456px;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.s7a {
+  background: url(../images/s4.png) no-repeat scroll 0 0 transparent;
+  width: 124px;
+  height: 17px;
+  position: absolute;
+  left: 50%;
+  margin-left: -8px;
+  top: 454px;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.s8 {
+  background: url(s8.png) no-repeat scroll 0 0 transparent;
+  width: 37px;
+  height: 28px;
+  position: absolute;
+  left: 50%;
+  margin-left: 88px;
+  top: 68px;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.s8 {
+	background: url(../images/s9.png) no-repeat scroll 0 0 transparent;
+    width: 87px;
+    height: 98px;
+    position: absolute;
+    left: 50%;
+    margin-left: -485px;
+    top: 286px;
+    z-index: 0;
+    pointer-events: none;
+}

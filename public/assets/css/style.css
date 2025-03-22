@@ -1,0 +1,263 @@
+::-webkit-scrollbar {
+  width: 0px;
+}
+.block {
+  float: left;
+}
+.alert {
+	text-align: center;
+	margin: 0 0 15px;
+	font-size: 14px;
+}
+.alert-success {
+	color: green;
+}
+.alert-danger {
+	color: red;
+}
+
+.alert {
+    text-align: center;
+    margin: 10px auto;
+    line-height: 30px;
+    border: 2px solid #d0c696;
+    border-radius: 2px;
+
+    position: relative;
+    font-family: HelveticaLight, Arial;
+    min-width: 180px;
+    z-index: 1;
+    opacity: 0.9;
+}
+.alert-danger {
+    background-color: #611211;
+    color: #FFF;
+    border-color: #390d0d;
+}
+.alert-success {
+    background-color: #10480d;
+    color: #FFF;
+    border-color: #0d3910;
+}
+
+.get-daily-reward-done {
+  width: 36px;
+  height: 27px;
+  background: url(./icons/ok_green.png) no-repeat;
+  border: none;
+  color: #ffe1b3;
+  text-transform: uppercase;
+  outline: none;
+  margin: 3px;
+  margin-left: auto;
+  margin-right: auto;
+  transform: scale(0.7);
+}
+
+.get-daily-reward-done2 {
+  width: 36px;
+  height: 27px;
+  background: url(./icons/ok_green.png) no-repeat;
+  border: none;
+  color: #ffe1b3;
+  text-transform: uppercase;
+  outline: none;
+  margin: 3px;
+  margin-left: auto;
+  margin-right: auto;
+  transform: scale(0.7);
+  filter: contrast(5%);
+}
+
+.product {
+  margin-left: 40px;
+  margin-top: 25px;
+  padding: 25px 0px;
+  width: 200px;
+  float: left;
+  height: 145px;
+  text-align: center;
+}
+
+.product-price {
+	position: absolute;
+  right: 40px;
+  top: 120px;
+}
+.product-icon {
+	  border: 1px solid #ffad2f;
+  border-radius: 3px;
+}
+
+.pagination {
+  float: right;
+  margin-top:10px;
+}
+
+.pagination a {
+  margin: auto;
+  float: left;
+  margin: 0 4px;
+
+}
+
+.pagination a:hover {
+  color: #ccc;
+   transition: all 0.3s ease;
+}
+
+
+.pageactive {
+color: #ccc;
+
+}
+.lefticon {
+	background-image: url(./icons/left.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	display: block;
+	width: 16px;
+	height: 16px;
+}
+
+.righticon {
+    float: left;
+	background-image: url(./icons/next.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	display: block;
+	width: 16px;
+	height: 16px;
+}
+
+.login_on {
+	background-image: url(./icons/on.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	display: block;
+	width: 16px;
+	height: 16px;
+}
+
+.login_off {
+	background-image: url(./icons/off.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	display: block;
+	width: 16px;
+	height: 16px;
+}
+
+.faction_dark {
+	background-image: url(./icons/faction.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	display: block;
+	width: 25px;
+	height: 25px;
+/*	margin: 0 auto;*/
+}
+.faction_light {
+	background-image: url(./icons/faction.png);
+	background-repeat: no-repeat;
+	background-position: 0px -25px;
+	width: 25px;
+	height: 25px;
+/*	margin: 0 auto;*/
+}
+
+.rank0 {
+
+}
+.rank1 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:0 0;width:27px;height:16px;}
+.rank2 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:0 -32px;width:27px;height:16px;}
+.rank3 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:0 -64px;width:27px;height:16px;}
+.rank4 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:0 -96px;width:27px;height:16px;}
+.rank5 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:0 -128px;width:27px;height:16px;}
+.rank6 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:0 -160px;width:27px;height:16px;}
+.rank7 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:0 -192px;width:27px;height:16px;}
+.rank8 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:0 -224px;width:27px;height:16px;}
+.rank9 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:0 -256px;width:27px;height:16px;}
+.rank10 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:0 -288px;width:27px;height:16px;}
+.rank11 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:0 -320px;width:27px;height:16px;}
+.rank12 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:0 -352px;width:27px;height:16px;}
+.rank13 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:0 -384px;width:27px;height:16px;}
+.rank14 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:0 -416px;width:27px;height:16px;}
+.rank15 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:0 -448px;width:27px;height:16px;}
+.rank16 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:0 -480px;width:27px;height:16px;}
+.rank17 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:-32px 0px;width:27px;height:16px;}
+.rank18 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:-32px -32px;width:27px;height:16px;}
+.rank19 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:-32px -64px;width:27px;height:16px;}
+.rank20 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:-32px -96px;width:27px;height:16px;}
+.rank21 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:-32px -128px;width:27px;height:16px;}
+.rank22 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:-32px -160px;width:27px;height:16px;}
+.rank23 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:-32px -192px;width:27px;height:16px;}
+.rank24 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:-32px -224px;width:27px;height:16px;}
+.rank25 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:-32px -256px;width:27px;height:16px;}
+.rank26 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:-32px -288px;width:27px;height:16px;}
+.rank27 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:-32px -320px;width:27px;height:16px;}
+.rank28 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:-32px -352px;width:27px;height:16px;}
+.rank29 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:-32px -384px;width:27px;height:16px;}
+.rank30 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:-32px -416px;width:27px;height:16px;}
+.rank31 {background-image: url(./icons/grade2.png);background-repeat:no-repeat;background-position:-32px -448px;width:27px;height:16px;}
+
+.class0 {background-image: url(./icons/party_icon.png);background-repeat:no-repeat;background-position:0px 0px;width:30px;height:30px;}
+.class1 {background-image: url(./icons/party_icon.png);background-repeat:no-repeat;background-position:-32px 0px;width:30px;height:30px;}
+.class2 {background-image: url(./icons/party_icon.png);background-repeat:no-repeat;background-position:-64px 0px;width:30px;height:30px;}
+.class3 {background-image: url(./icons/party_icon.png);background-repeat:no-repeat;background-position:-96px 0px;width:30px;height:30px;}
+.class4 {background-image: url(./icons/party_icon.png);background-repeat:no-repeat;background-position:-128px 0px;width:30px;height:30px;}
+.class5 {background-image: url(./icons/party_icon.png);background-repeat:no-repeat;background-position:-160px 0px;width:30px;height:30px;}
+
+.goddess_aol0 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px 0px;width: 40px;height: 40px;}
+.goddess_aol1 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -40px;width: 40px;height: 40px;}
+.goddess_aol2 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -80px;width: 40px;height: 40px;}
+.goddess_aol3 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -120px;width: 40px;height: 40px;}
+.goddess_aol4 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -160px;width: 40px;height: 40px;}
+.goddess_aol5 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -200px;width: 40px;height: 40px;}
+.goddess_aol6 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -240px;width: 40px;height: 40px;}
+.goddess_aol7 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -280px;width: 40px;height: 40px;}
+.goddess_aol8 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -320px;width: 40px;height: 40px;}
+.goddess_aol9 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -360px;width: 40px;height: 40px;}
+.goddess_aol10 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -400px;width: 40px;height: 40px;}
+.goddess_aol11 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -440px;width: 40px;height: 40px;}
+.goddess_aol12 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -480px;width: 40px;height: 40px;}
+.goddess_aol13 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -520px;width: 40px;height: 40px;}
+.goddess_aol14 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -560px;width: 40px;height: 40px;}
+.goddess_aol15 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -600px;width: 40px;height: 40px;}
+.goddess_aol16 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -640px;width: 40px;height: 40px;}
+.goddess_aol17 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -680px;width: 40px;height: 40px;}
+.goddess_aol18 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -720px;width: 40px;height: 40px;}
+.goddess_aol19 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -760px;width: 40px;height: 40px;}
+.goddess_aol20 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -800px;width: 40px;height: 40px;}
+.goddess_aol21 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -840px;width: 40px;height: 40px;}
+.goddess_aol22 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -880px;width: 40px;height: 40px;}
+.goddess_aol23 {background-image: url(./icons/goddess_aol.png);background-repeat: no-repeat;background-position: 0px -920px;width: 40px;height: 40px;}
+
+.goddess_uof0  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px 0px;width: 40px;height: 40px;}
+.goddess_uof1  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -40px;width: 40px;height: 40px;}
+.goddess_uof2  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -80px;width: 40px;height: 40px;}
+.goddess_uof3  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -120px;width: 40px;height: 40px;}
+.goddess_uof4  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -160px;width: 40px;height: 40px;}
+.goddess_uof5  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -200px;width: 40px;height: 40px;}
+.goddess_uof6  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -240px;width: 40px;height: 40px;}
+.goddess_uof7  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -280px;width: 40px;height: 40px;}
+.goddess_uof8  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -320px;width: 40px;height: 40px;}
+.goddess_uof9  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -360px;width: 40px;height: 40px;}
+.goddess_uof10  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -400px;width: 40px;height: 40px;}
+.goddess_uof11  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -440px;width: 40px;height: 40px;}
+.goddess_uof12  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -480px;width: 40px;height: 40px;}
+.goddess_uof13  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -520px;width: 40px;height: 40px;}
+.goddess_uof14  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -560px;width: 40px;height: 40px;}
+.goddess_uof15  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -600px;width: 40px;height: 40px;}
+.goddess_uof16  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -640px;width: 40px;height: 40px;}
+.goddess_uof17  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -680px;width: 40px;height: 40px;}
+.goddess_uof18  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -720px;width: 40px;height: 40px;}
+.goddess_uof19  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -760px;width: 40px;height: 40px;}
+.goddess_uof20  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -800px;width: 40px;height: 40px;}
+.goddess_uof21  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -840px;width: 40px;height: 40px;}
+.goddess_uof22  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -880px;width: 40px;height: 40px;}
+.goddess_uof23  {background-image: url(./icons/goddess_uof.png);background-repeat: no-repeat;background-position: 0px -920px;width: 40px;height: 40px;}
+
+.content_header.border_box {
+    background: none !important;
+}

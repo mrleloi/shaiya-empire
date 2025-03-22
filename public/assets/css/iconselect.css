@@ -1,0 +1,48 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 28, 2013, 7:09:35 AM
+    Author     : bugraozden
+*/
+
+.icon-select{
+    width:0px;
+ }
+
+ .icon-select .selected-icon {
+
+     position: absolute;
+     margin: 0px;
+     padding: 0px;
+     border: 1px solid #ffad2f;
+     border-radius: 3px;
+ }
+
+ .icon-select .box {
+
+     position: absolute;
+     top:0px;
+     left: 175px;
+     padding: 0px;
+     width: 800px; /* sil */
+     height: 800px; /* sil */
+
+ }
+
+ .icon-select .icon {
+     position: relative;
+     padding: 0px;
+     overflow:hidden;
+     float: left;
+ }
+
+
+ .icon-select .icon.selected {
+     position: relative;
+     padding: 0px;
+     overflow:hidden;
+     float: left;
+ }

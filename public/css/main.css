@@ -1,0 +1,273 @@
+﻿article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+    position: relative;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+    color: #ce8282;
+    color: #d8b89d;
+    color: #c5d0e4;
+    color: #c8e3ff;
+    color: #f1ecd5;
+    color: #c6dee8;
+    color: white;
+}
+
+a {
+    color: #8197bf;
+    color: #d8b89d;
+    color: #d8b89d;
+    color: #7594cc;
+    color: #ce8282;
+    color: #83a3d2;
+}
+
+table > thead > tr > th {
+    background-color: #1a1d21 !important;
+}
+
+#vote-page .first-block {
+    background: url(/img/bg-3.jpg) no-repeat center;
+    background-size: cover;
+}
+
+.mvc-grid-title {
+    color: #7e8ca5 !important;
+}
+
+.table-striped > tbody > tr {
+    background-color: #101316b5;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #14171bbd;
+}
+
+.wrap {
+    background: none;
+    background-color: #0a0b0c;
+}
+
+.navbar.bg-dark {
+    border: none;
+}
+.navbar-sh {
+    background-image: none;
+    background-color: #111215 !important;
+    border-bottom: 0.5px solid #2e364447 !important;
+}
+.navbar-brand {
+    display: none;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: #d8b89d;
+    /* color: #6f97ca; */
+    color: white;
+}
+    .navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
+        color: #d8b89d;
+    }
+
+
+.navbar-description {
+    padding-right: .5rem;
+    padding-left: .5rem;
+    color: #b99a73;
+}
+
+.donate-link {
+    color: #dcae6c !important;
+}
+.dropdown-menu .dropdown-item {
+    color: white;
+}
+
+.btn-default {
+    border: 1px solid #2e3644;
+}
+    .btn-default:hover {
+        border: 1px solid #515f77;
+    }
+
+.breadcrumb {
+    border: 1px solid #2e3644;
+    background-color: #0f1113;
+    font-family: Beaufort for LOL,serif;
+    text-transform: uppercase;
+}
+    .breadcrumb > .active {
+        color: #cfd8e8;
+    }
+.footer {
+    background: none;
+    background-color: #111215;
+    border-top: 1px solid #2e3644;
+    color: #ece7e2;
+    position: relative;
+
+    font-family: Beaufort for LOL,serif;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+    .footer a {
+        color: #83a3d2;
+
+    }
+
+
+.panel {
+    background-color: #0f1113;
+    border: 1px solid #2e3644;
+    color: #c6dee8;
+    color: #d6cbcb;
+}
+
+.panel h3 {
+    font-size: 19px;
+}
+.panel-primary > .panel-heading {
+    background-color: #111315;
+}
+
+.text-primary, .text-primary:hover {
+    color: #7594cc !important;
+    color: #ce8282 !important;
+    color: #ceb382 !important;
+}
+
+.form-control {
+    border: 1px solid #2e3644;
+}
+    .form-control:focus {
+        border-color: #596884;
+    }
+
+
+.alert-warning {
+    background-color: #b3a23f;
+}
+
+.bg-blue {
+    background: url(/img/bg-blue.jpg) no-repeat center;
+}
+
+    .nav-pills > li > a {
+        color: #6f8dbb;
+        color: #bdc0c5;
+    }
+
+.news-item {
+    border: 1px solid #242b35;
+}
+.news-item:hover {
+    border: 1px solid #363a49;
+}
+    .news-item .news-header h3 {
+        font-family: "Beaufort for LOL",YuMincho,"Yu Mincho","MS Mincho","Hiragino Kaku Gothic ProN",serif;
+    }
+    .news-item .news-header h4 {
+        font-family: "Beaufort for LOL",YuMincho,"Yu Mincho","MS Mincho","Hiragino Kaku Gothic ProN",serif;
+    }
+
+    .item {
+        border: 1px solid #282d35;
+        background-color: #0f1215;
+    }
+
+.drop-item {
+    margin: 0;
+}
+
+.step__num {
+    border: 2px solid #96acd0;
+    color: #96add0;
+}
+.quest-item, .ref-item {
+    border: 1px solid #456292;
+}
+.quest-bottom, .item-action {
+    border-top: 1px solid #456292;
+}
+.quest-content h1, .ref-item h1 {
+    /* color: #6f97ca; */
+}
+.quest-bottom, .item-action {
+
+}
+
+.select2-container .select2-selection--single {
+    border: 1px solid #2e3644;
+}
+.select2-container .select2-selection {
+    border: 1px solid #2e3644;
+}
+
+
+/* Daily goals */
+.daily-goals {
+    background: url(/img/bg-3.jpg) no-repeat center;
+    background-size: cover;
+    color: #dcdcdc;
+    padding: 20px 26px;
+}
+
+.goal {
+    background-color: #1b1d1e;
+    background-color: #081623d4;
+}
+
+    .goal.available {
+        background-color: #615b25c2;
+        background-color: #2f6125c2;
+        border: 1px solid #3f5a79;
+    }
+
+    .goal.redeemed {
+        background-color: #544e17c2;
+        background-color: #000000c2;
+    }
+
+.goal {
+    margin: 0;
+    cursor: pointer;
+    padding: 10px 15px;
+    border: 1px solid #3f5a79;
+    color: #c4b998;
+    position: relative;
+    font-size: 14px;
+    color: white;
+}
+.goal span {
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.goal i {
+    font-weight: bold;
+}
+.goal .row > div {
+        margin-top: auto !important;
+        margin-bottom: auto !important;
+    }
+
+    .goal .item-icon {
+        border: 1px solid white;
+        padding: 3px;
+        width: 38px;
+        height: 38px;
+        position: relative;
+        margin: 0 auto;
+    }
+
+.goal .item-count {
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    right: 2px;
+    bottom: 0px;
+    text-shadow: 0px 0px 3px black;
+}
+
+.text-info {
+    color: #5194dc !important;
+    text-shadow: 1px 1px 3px #007bff;
+}
+

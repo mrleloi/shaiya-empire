@@ -1,0 +1,1 @@
+{!! $settingDownload->content !!}
