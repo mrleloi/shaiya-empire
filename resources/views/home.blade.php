@@ -3,394 +3,335 @@
 @section('title', $setting->title)
 
 @section('content')
-{{--<link rel="stylesheet" href="https://shaiyarenegade.com/css/page_theme.css"></link>
-<style>
-	@charset "UTF-8";
-	@import url(https://fonts.googleapis.com/css?family=Oswald:400,700);
-	@import url(https://fonts.googleapis.com/css?family=Nunito:400,700);
-@font-face {
-  font-family: 'Genericons';
-  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/53819/genericons-regular-webfont.eot');
-  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/53819/genericons-regular-webfont.woff') format('woff'),
-     url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/53819/genericons-regular-webfont.eot') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-    .main_content {
-        margin-top: 30px !important;
-    }
-	.body_content {
-		min-height: 100px !important;
-	}
-	:root {
-	  background: -webkit-linear-gradient(top, #222838 0%, #131621 100%);
-	  height: 100vh;
-	}
 
-	.main-container {
-	  margin: 0 auto;
-	  position: relative;
-	  top: 0;
-	  left: 0;
-	  text-align: center;
-	  right: 0;
-		padding-left: 10px;    margin-top: -5px;
+    <div id="data">
+        <div style="margin-bottom: 10px; display: inline-block; margin-right: 6px;"><a href="#"  class="register"><img src="images/joindiscord.jpg" border="0"></a></div>
+        <div style="margin-bottom: 10px; display: inline-block;"><a href="#" class="serverinfo"><img src="images/serverinfo.jpg" border="0"></a></div>
 
-	}
+        {{-- Phần Slider --}}
+        <div class="sliders-main box-shadow">
+            <div id="carousel-banners" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    @if($settingGeneral && $settingGeneral->slides && $settingGeneral->slides->count() > 0)
+                        @foreach($settingGeneral->slides as $index => $slide)
+                            <li data-target="#carousel-banners" data-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}"></li>
+                        @endforeach
+                    @else
+                        <li data-target="#carousel-banners" data-slide-to="0" class="active"></li>
+                    @endif
+                </ol>
+                <div class="carousel-inner">
+                    @if($settingGeneral && $settingGeneral->slides && $settingGeneral->slides->count() > 0)
+                        @foreach($settingGeneral->slides as $index => $slide)
+                            <div class="item {{ $index == 0 ? 'active' : '' }}">
+                                <a href="{{ $slide->custom_properties['link'] ?? '#' }}" {{ isset($slide->custom_properties['target']) ? 'target="' . $slide->custom_properties['target'] . '"' : '' }}>
+                                    <img src="{{ $slide->getUrl() }}" border="0" alt="{{ $slide->name }}">
+                                </a>
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="item active">
+                            <img src="/images/slides/slide-default.jpg" border="0" alt="Default Slide">
+                        </div>
+                    @endif
+                </div>
+                <a class="left carousel-control" href="#carousel-banners" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-banners" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
 
-	body
-	{
-	  background:#333;
-	}
-	a {
-	  color: white;
-	  text-decoration: none;
-	}
+        {{-- Phần Video Carousel --}}
+        <div class="owl-carousel owl-theme" style="margin-bottom: 10px;">
+            @if($settingGeneral && $settingGeneral->carousel_videos && is_array($settingGeneral->carousel_videos))
+                @foreach($settingGeneral->getCarouselVideosWithInfo() as $video)
+                    <div class="item">
+                        <a id="video" href="{{ $video['embed_url'] }}" data-lightview-options="width: 1820, height: 1080, viewport: 'scale'" data-lightview-type="iframe" class="lightview" data-toggle="lightbox" data-lightview-group="youtube">
+                            <div class="image-thumb-preview" style="background-image:url('{{ $video['thumbnail'] }}'); background-position: center center; background-repeat: no-repeat; background-size:98%; height: 120px; width: 213px;">
+                                <div style="position: absolute; width: 100%; display: inline-block; bottom: 4px; padding: 0 7px; background-color: rgba(0,0,0,0.8);font-size: 11px;overflow: hidden;height: 25px;line-height: 25px;">{{ $video['title'] }}</div>
+                            </div>
+                            <div class="play-button-small"></div>
+                        </a>
+                    </div>
+                @endforeach
+            @else
+                <div class="item">
+                    @if($settingGeneral && $settingGeneral->video_url)
+                        <a id="video" href="{{ $settingGeneral->getVideoEmbedUrl() }}" data-lightview-options="width: 1820, height: 1080, viewport: 'scale'" data-lightview-type="iframe" class="lightview" data-toggle="lightbox" data-lightview-group="youtube">
+                            <div class="image-thumb-preview" style="background-image:url('{{ $settingGeneral->getVideoThumbnail() }}'); background-position: center center; background-repeat: no-repeat; background-size:98%; height: 120px; width: 213px;">
+                                <div style="position: absolute; width: 100%; display: inline-block; bottom: 4px; padding: 0 7px; background-color: rgba(0,0,0,0.8);font-size: 11px;overflow: hidden;height: 25px;line-height: 25px;">Video mới nhất</div>
+                            </div>
+                            <div class="play-button-small"></div>
+                        </a>
+                    @endif
+                </div>
+            @endif
+        </div>
 
-	h1, h2 {
-	  color: white;
-	  font-family: 'Oswald', sans-serif;
-	  font-weight: normal;
-	}
+        <script type="text/javascript">
+            $('.owl-carousel').owlCarousel({
+                loop: false,
+                margin: 5,
+                nav: false,
+                dots: false,
+                autoWidth: true,
+            })
+        </script>
+        <style type="text/css">
+            .news-html {
+                font-size: 14px !important;
+            }
+            .news-icon-edit {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                font-size: 14px;
+            }
+            .sub_container .news-head {
+            <!-- border-left: inset 5px #5b4542 !important;
+            padding-left: 10px;
+            }
+        </style>
 
-	h2 {
-	  font-size: 14px;
-	  margin-bottom: 30px;
-	  color: #24E2B8;
-	}
+        <div class="main_container box-shadow">
+            <div class="header">
+                <div class="header_left">TIN TỨC</div>
+                <div class="header_right">
 
-	.one, .two, .three, .four, .five {
-	  border: none;
-	  border-radius: 4px;
-	  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.48);
-	  overflow: hidden;
-	  padding: 20px 50px 20px 70px;
-	  margin-top: 20px;
-	  font-size: 20px;
-	  position: relative;
-	  color: white;
-	  outline: none;
-	  cursor: pointer;
-	  -webkit-transition: background-position .7s,box-shadow .4s;
-	  transition: background-position .7s,box-shadow .4s;
-	  background-size: 110%;
-	  font-family: 'Oswald', sans-serif;
-	}
-	.one:hover, .two:hover, .three:hover, .four:hover, .five:hover {
-	  background-position: 0% 30%;
-	}
-	.one:hover:after, .two:hover:after, .three:hover:after, .four:hover:after, .five:hover:after {
-	  right: -40px;
-	  -webkit-transition: right .4s,-webkit-transform 30s .2s linear;
-	  transition: right .4s,-webkit-transform 30s .2s linear;
-	  transition: right .4s,transform 30s .2s linear;
-	  transition: right .4s,transform 30s .2s linear,-webkit-transform 30s .2s linear;
-	}
-	.one:before, .two:before, .three:before, .four:before, .five:before, .one:after, .two:after, .three:after, .four:after, .five:after {
-	  font-family: FontAwesome;
-	  display: block;
-	  position: absolute;
-	}
-	.one:before, .two:before, .three:before, .four:before, .five:before {
-	  -webkit-transition: all 1s;
-	  transition: all 1s;
-	  font-size: 30px;
-	  left: 25px;
-	  top: 19px;
-	}
-	.one:after, .two:after, .three:after, .four:after, .five:after {
-	  -webkit-transition: right .4s, -webkit-transform .2s;
-	  transition: right .4s, -webkit-transform .2s;
-	  transition: right .4s, transform .2s;
-	  transition: right .4s, transform .2s, -webkit-transform .2s;
-	  font-size: 100px;
-	  opacity: .3;
-	  right: -120px;
-	  top: -17px;
-	}
+                    <!--
+                    <ul class="pagination">
+                      <li><a href="#" class="first" data-toggle="tooltip" data-placement="top" title="First" data-action="first"><span class="glyphicon glyphicon-fast-backward"></span></a></li>
+                      <li><a href="#" class="previous" data-toggle="tooltip" data-placement="top" title="Prev" data-action="previous"><span class="glyphicon glyphicon-step-backward"></span></a></li>
+                      <li><input type="text" readonly="readonly" data-max-page="40" /></li>
+                      <li><a href="#" class="next" data-toggle="tooltip" data-placement="top" title="Next" data-action="next"><span class="glyphicon glyphicon-step-forward"></span></a></li>
+                      <li><a href="#" class="last" data-toggle="tooltip" data-placement="top" title="Last" data-action="last"><span class="glyphicon glyphicon-fast-forward"></span></a></li>
+                    </ul>
+                    -->
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="global_container">
+                <div id="news" class="sub_container">
+                    <div id="notice_new"></div>
+                    <ul id="news_page">
 
-	.one {
-	  box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.16) inset, 0px 0px 10px 0px #782CDA;
-	  background-image: -webkit-gradient(linear, left top, left bottom, from(#782CDA), to(rgba(126, 94, 162, 0.51))), url("http://gearnuke.com/wp-content/uploads/2015/11/1280x720-cuU.jpg");
-	  background-image: linear-gradient(to bottom, #782CDA, rgba(126, 94, 162, 0.51)), url("http://gearnuke.com/wp-content/uploads/2015/11/1280x720-cuU.jpg");
-	}
-	.one:hover {
-	  box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.16) inset, 0px 0px 30px 0px #782CDA;
-	}
-	.one:hover:after {
-	  -webkit-transform: scale(1);
-			  transform: scale(1);
-	}
-	.one:hover:before {
-	  -webkit-transform: scale(1.2);
-			  transform: scale(1.2);
-	}
-	.one:after, .one:before {
-	  content: "";
-	}
-	.one b {
-	  color: #DDA6FF;
-	  font-weight: 700;
-	}
+                        @foreach ($articles as $key => $article)
 
-	.three {
-	  box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.16) inset, 0px 0px 10px 0px #1648b1;
-	  background-image: -webkit-gradient(linear, left top, left bottom, from(#1648b1), to(rgba(86, 202, 139, 0.18))), url("http://blog.teamthinklabs.com/wp-content/uploads/2012/09/codepen-460x253.png");
-	  background-image: linear-gradient(to bottom, #1648b1, rgba(86, 202, 139, 0.18)), url("http://blog.teamthinklabs.com/wp-content/uploads/2012/09/codepen-460x253.png");
-	}
-	.three:hover {
-	  box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.16) inset, 0px 0px 30px 0px #1648b1;
-	}
-	.three:hover:after {
-	  -webkit-transform: scale(1);
-			  transform: scale(1);
-	}
-	.three:hover:before {
-	  -webkit-transform: scale(1.2);
-			  transform: scale(1.2);
-	}
-	.three:after, .three:before {
-	  content: "\f082";
-	}
-	.three b {
-	  color: #63FFAC;
-	  font-weight: 700;
-	}
+                            <li id="n{{ $key }}d" class="news-row">
+                                <div class="news-head">
+                                    <a href="{{ route('post', ['id' => $article['id'] ]) }}" title="{{ $article['title'] }}"><h5>{{ $article['title'] }}</h5></a>
 
-</style>
-<div id="content_ajax" style="margin-top: 0px;">
-    <!-- <div class="content_header border_box">
-        <span>{{ $settingGeneral->title }} | <i>{{ $setting->header }}</i></span>
-        <br><br>
+                                    <div class="date"> Ngày đăng: {{ \Carbon\Carbon::parse($article['publish_at'])->format('d/m/Y') }}</div>
 
-        <div style="position:relative;width:96%;" class="nice_button">
-            <div>
-                <h4 style="font-weight: bold;color:#ff9900;">{{ $setting->events_title }}</h4>
-                {!! html_entity_decode($setting->events_content) !!}
-            </div><br>
-        </div> <br><br>
-        <div style="position:relative;width:96%;" class="nice_button">
-            <div>
-                <h4 style="font-weight: bold;color:#ff9900;">{{ $setting->announcement_title }}</h4>
-                {!! html_entity_decode($setting->announcement_content) !!}
-            </div><br>
-        </div> <br><br>
-        --}}{{--<table style="margin:20px auto 20px auto;">
-                <tbody><tr><td><a class="nice_button" href="?p=1"><i class="fas fa-angle-double-left" aria-hidden="true"></i></a></td>
+                                </div>
 
-                    <td><a style="margin-left:5px;" class="nice_button nice_active" href="?page=">1</a></td>
-                    <td><a style="margin-left:5px;" class="nice_button" href="?page=1"><i class="fas fa-angle-double-right" aria-hidden="true"></i></a></td>
 
-                </tr>
-                </tbody></table>--}}{{--
-    </div> -->
-	<div id="home_welcome" class="" style="">
-		<div id="home_infor" class="sidebar border_box" style="float: left;
-    width: 43%;padding: 0;">
-			<section id="sidebox_status" class="sidebox" style="
-    margin: 0 0 20px;
-    width: 300px;
-    position: relative;">
-				<div id="downloadLink" style="
+                            </li>
 
-    background-image: url(/img/bg_btn_download.png);
-    background-size: cover;
-    height: 112px;
-    background-repeat: no-repeat;
-    display: inline;
-    float: left;
-    width: 314px;
-    padding: 25px 30px;">
-					<a href="{{ route('download') }}" title="Download" style="display: block;
-    width: 225px;
-    margin: -8px 0 0 12px;
-    height: 34px;
-    line-height: 24px;
-    text-align: center;
-    padding: 12px 0 14px;font-size: 22px;
-    font-weight: bold;
-    letter-spacing: -.1em;
-    text-transform: uppercase;
-    color: #21f56e;
-}">
-					<div id="downloadText" style="
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    line-height: 1.5;
-    font-weight: 600;">
-						TẢI GAME
-					</div>
-					<div id="downloadPlayFree" style="
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    font-weight: 600;">
-						Miễn Phí
-					</div></a>
-				</div>
-				<h4 class="sidebox_title border_box" style="
-    padding: 0 15px;
-    margin: 20px 0 0 0;
-	top: 10px;
-    height: 40px;
-    overflow: hidden;
-    background-image: url('https://shaiyarenegade.com/images/block-front-right.jpg');
-	background-position: 0 0;
-    line-height: 40px;
-    font-size: 14px;
-    text-transform: uppercase;">
-					<i>{{ __('SERVER INFORMATION') }}</i>
-					<div class="topvoter_desc" style="
+                        @endforeach
 
-    top: 10px;
-    right: 15px;
-    color: #605d57;
-    position: absolute;
-    font-size: 13px;
-    font-weight: 700;
-    text-shadow: 0 2px 0 rgba(0, 0, 0, .4);
-    text-transform: uppercase;">
-					<a href="{{ route('server-info') }}" style="
-    color: #558be7;
-    cursor: pointer;
-    text-decoration: none;">view all</a></div>
-				</h4>
-				<div class="sidebox_body border_box" style="
-    padding: 16px 0;
-	top: 10px;
-    margin: 0 0 0 0;
-    background-image: url('https://shaiyarenegade.com/images/block-front-right.jpg');
-    background-repeat: repeat-y;
-    background-position: -300px 0;">
-					<div id="realm_1" class="realm_1 realm_holder wotlk online lastrow" style="margin: 0;
-    width: 100%;
-    height: auto;
-    display: block;">
-						<div class="realm_row row-1 border_box" style="
-    height: auto;
-    margin: 0 0 5px;
-    padding: 0 16px;
-    display: block;">
-							{!! html_entity_decode($settingHome->content_server_info) !!}
-						</div>
-					</div>
-				</div>
-				<div class="block-foot" style="
-	margin: 0 0 0 0;
-    background-image: url('/images/block-front-right.jpg');
-    background-repeat: repeat-y;
-    background-position: 0 6px;
-    height: 10px;
-    width: 300px;"></div>
-			</section>
+                    </ul>
 
-		</div>
-		<div class="raw-html-embed" style="    float: right;
-    width: 57%;">
-			<div class='main-container'>
-			  <button class='one'><a href="{{ $settingGeneral->url_discord }}"><b>DISCORD</b></a></button>
-			  <button class='three'><a href="{{ $settingGeneral->url_facebook }}"><b>FACEBOOK</b></a></button>
-			</div>
-			<div id="intro-panel" style="
+                </div>
+            </div>
+        </div>
 
-    width: 430px;
-    overflow: hidden;
-    margin-top: 23px;
-    margin-left: -28px;
-    margin-right: 0px;
-    z-index: 1000;">
-				<div class="block-body" id="intro-body" style="">
-					<div class="block-content" id="intro-media" style="
+        <div class="main_container box-shadow">
+            <div class="header">
+                <div class="header_left">SỰ KIỆN</div>
+                <div class="header_right">
 
-    height: 340px;
-    margin-left: 10px;
-    padding: 18px 0 0;
-    background-position: -200px 0;
-    background-image: url(/images/intro-block.png);">
-						<div id="mediaViewer" style="
+                    <!--
+                    <ul class="pagination">
+                      <li><a href="#" class="first" data-toggle="tooltip" data-placement="top" title="First" data-action="first"><span class="glyphicon glyphicon-fast-backward"></span></a></li>
+                      <li><a href="#" class="previous" data-toggle="tooltip" data-placement="top" title="Prev" data-action="previous"><span class="glyphicon glyphicon-step-backward"></span></a></li>
+                      <li><input type="text" readonly="readonly" data-max-page="40" /></li>
+                      <li><a href="#" class="next" data-toggle="tooltip" data-placement="top" title="Next" data-action="next"><span class="glyphicon glyphicon-step-forward"></span></a></li>
+                      <li><a href="#" class="last" data-toggle="tooltip" data-placement="top" title="Last" data-action="last"><span class="glyphicon glyphicon-fast-forward"></span></a></li>
+                    </ul>
+                    -->
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="global_container">
+                <div id="news" class="sub_container">
+                    <div id="notice_new"></div>
+                    <ul id="news_page">
 
-    height: 250px;
-    position: relative;
-    z-index: 500;
-    width: 380px;
-    overflow: hidden;
-    margin: 10px auto 3px;
-    border-style: solid;
-    border-color: #555;
-    background-color: #000;
-    background-image: -moz-linear-gradient(100% 100% 90deg, #333333, #000000);
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#000000), to(#333333));
-    border-width: 3px;">
 
-							<iframe width="380px" style="" height="250px" src="https://www.youtube.com/embed/iG6u2sHO-4k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                        @foreach ($events as $key => $event)
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div style="clear: both;"></div>
-	</div>
-	<div class="block-head" style=" */
-    padding: 15px 25px 25px;
-    position: relative;    text-transform: uppercase;
-    line-height: 20px;
-    background: url('/images/block-news.jpg');
-    background-repeat: no-repeat;
-    background-size: contain;
-">
-		<h2 class="title" style="
-    font: bold 19px Arial, Helvetica;
-    letter-spacing: -.015em;
-    line-height: 29px;
-    color: #bab9b9;
-    text-shadow: 0 -1px 0 #000;">Tin tức</h2>
-	</div>
-	<div class="block-body" style="
-	background: none !important;
-	position: relative;
-    margin-top: -30px;
-    margin-bottom: 50px;
-}
-">
-		<div class="block-content" style="
-    padding: 5px 13px 13px;
-    	background: none !important;position: relative;">
-		@foreach ($articles as $article)
-			<dl class="article" id="article-0" style="border: none !important;
-    margin: 0px;">
-				<dt class="subject" style="
-    float: left;
-    margin: 0;
-    width: 800px;
-    padding: 3px;
-    border: none;
-    letter-spacing: -.015em;
-    font: bold 13px / 12px Arial, Helvetica;
-}
-    color: #ccc;
-    vertical-align: baseline;"><a href="{{ route('post', ['id' => $article['id'] ]) }}" title="{{ $article['title'] }}" style="
-    color: #c4c4c4;
-}
-    cursor: pointer;
-    text-decoration: none;"><img src="/images/news.gif" border="0"> {{ $article['title'] }}</a></dt>
+                            <li id="n{{ $key }}d" class="news-row">
+                                <div class="news-head">
+                                    <a href="{{ route('post', ['id' => $article['id'] ]) }}" title="{{ $article['title'] }}"><h5>{{ $article['title'] }}</h5></a>
 
-				<dd class="date" style="
-    float: right;
-    margin: 0;
-	margin-right: -30px !important;
+                                    <div class="date"> Ngày đăng: {{ \Carbon\Carbon::parse($event['publish_at'])->format('d/m/Y') }}</div>
 
-    display: inline;
-    padding: 0 7px;
-    text-transform: capitalize;
-    font: 10px / 18px Verdana, Geneva, sans-serif;
-    background: #222;"><span>{{ \Carbon\Carbon::parse($article['publish_at'])->format('d/m/Y') }}</span></dd>
-				<dd style="
-    clear: both;"></dd>
-			</dl>
-		@endforeach
-		</div>
-	</div>
-</div>--}}
+                                </div>
+
+
+                            </li>
+
+                        @endforeach
+
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#news ul#news_page:not(:first)').hide();
+                $('.pagination').jqPagination({
+                    page_string: '{current_page}/{max_page}',
+                    max_page: $('#news ul#news_page').length,
+                    paged: function(page) {
+                        $('#news ul#news_page').fadeOut(100);
+                        $($('#news ul#news_page')[page - 1]).fadeIn(500);
+                    }
+                });
+            });
+        </script>
+
+    </div>
+
+    <section id="media">
+        <div class="home_media home_container box-shadow">
+            <div class="new_trailer">
+                <div class="sub_header">
+                    <h1>Video mới nhất</h1>
+                    <a href="#" class="videos">Xem thêm</a>
+                    <div class="clear"></div>
+                </div>
+                <div class="new_video_thumb">
+                    @if($settingGeneral && $settingGeneral->video_url)
+                        <a id="video" href="{{ $settingGeneral->getVideoEmbedUrl() }}" data-lightview-title="" data-lightview-caption="" data-lightview-options="width: 1820, height: 1080, viewport: 'scale'" data-lightview-type="iframe" class="lightview" data-toggle="lightbox" data-lightview-group="youtube" title="">
+                            <div class="image-thumb-preview" style="background-image:url('{{ $settingGeneral->getVideoThumbnail() }}'); background-position: center center; background-repeat: no-repeat; background-size:98%;"></div>
+                            <div class="play-button-small"></div>
+                        </a>
+                    @endif
+                </div>
+                <div class="sub_header sreenshots">
+                    <h1>Ảnh mới nhất</h1>
+                    <a href="#" class="screenshots">Xem thêm</a>
+                    <div class="clear"></div>
+                </div>
+                <ul class="screanshots home_scr">
+                    @if($settingGeneral && $settingGeneral->screenshots && $settingGeneral->screenshots->count() > 0)
+                        @php
+                            $visibleImages = $settingGeneral->screenshots->take(3);
+                        @endphp
+
+                        @foreach($visibleImages as $image)
+                            <li>
+                                <a class="container_frame lightview" data-lightview-group="screenshots" rel="gallery[mygallery]" href="{{ $image->getUrl() }}">
+                                    <span class="cframe_inner" style="background-image:url({{ $image->getUrl() }}); background-repeat: no-repeat; background-size:100%;"></span>
+                                </a>
+                            </li>
+                        @endforeach
+                    @endif
+                    <div class="clear"></div>
+                </ul>
+            </div>
+        </div>
+        <div class="top_voters home_container box-shadow">
+            <div class="sub_header">
+                <h1>Ảnh nổi bật</h1>
+                @if($settingGeneral && $settingGeneral->screenshots && $settingGeneral->screenshots->count() > 6)
+                    <a href="#" class="screenshots" id="show-more-screenshots">Xem tất cả</a>
+                @else
+                    <a href="#" class="screenshots">Xem tất cả</a>
+                @endif
+                <div class="clear"></div>
+            </div>
+            <div class="cont_container">
+                <ul class="screenshots_grid">
+                    @if($settingGeneral && $settingGeneral->screenshots && $settingGeneral->screenshots->count() > 0)
+                        @foreach($settingGeneral->screenshots->take(6) as $index => $image)
+                            <div class="screenshot_item{{ $index > 5 ? ' hidden-screenshot' : '' }}">
+                                <a class="lightview" data-lightview-group="screenshots" rel="gallery[mygallery]" href="{{ $image->getUrl() }}">
+                                    <img src="{{ $image->getUrl() }}" class="img-fluid" alt="Screenshot">
+                                </a>
+                            </div>
+                        @endforeach
+
+                        <!-- Ảnh ẩn sẽ hiển thị khi click "Xem tất cả" -->
+                        @if($settingGeneral->screenshots->count() > 6)
+                            <div id="additional-screenshots" style="display: none; width: 100%;">
+                                @foreach($settingGeneral->screenshots->slice(6) as $image)
+                                    <div class="screenshot_item">
+                                        <a class="lightview" data-lightview-group="screenshots" rel="gallery[mygallery]" href="{{ $image->getUrl() }}">
+                                            <img src="{{ $image->getUrl() }}" class="img-fluid" alt="Screenshot">
+                                        </a>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+                    @endif
+                </ul>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const showMoreBtn = document.getElementById('show-more-screenshots');
+                if (showMoreBtn) {
+                    showMoreBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const additionalScreenshots = document.getElementById('additional-screenshots');
+                        if (additionalScreenshots) {
+                            if (additionalScreenshots.style.display === 'none') {
+                                additionalScreenshots.style.display = 'flex';
+                                showMoreBtn.textContent = 'Thu gọn';
+                            } else {
+                                additionalScreenshots.style.display = 'none';
+                                showMoreBtn.textContent = 'Xem tất cả';
+                            }
+                        }
+                    });
+                }
+            });
+        </script>
+    </section>
+
+
+    <style>
+        .screenshots_grid {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -5px;
+        }
+
+        .screenshot_item {
+            flex: 0 0 50%; /* 2 cột */
+            padding: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .screenshot_item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border: 2px solid rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .screenshot_item img:hover {
+            border-color: rgba(255,255,255,0.5);
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 768px) {
+            .screenshot_item {
+                flex: 0 0 100%; /* 1 cột khi màn hình nhỏ */
+            }
+        }
+    </style>
+
 @endsection

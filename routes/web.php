@@ -35,7 +35,7 @@ Route::any('/pages/quydinh.php', [\App\Http\Controllers\GuideRulesController::cl
 
 Route::any('/pages/huongdan.php', [\App\Http\Controllers\GuideFaqsController::class, 'index'])->name('guide-faqs');
 
-Route::any('/post/{id}', [\App\Http\Controllers\PostController::class, 'show'])->name('post');
+Route::any('/post-{id}', [\App\Http\Controllers\PostController::class, 'show'])->name('post');
 //Route::any('/boss-record', [\App\Http\Controllers\BossRecordController::class, 'index'])->name('boss-record');
 //Route::any('/guide-droplist', [\App\Http\Controllers\GuideDroplistController::class, 'index'])->name('guide-droplist');
 
