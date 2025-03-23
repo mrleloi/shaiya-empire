@@ -11,11 +11,6 @@
         <div class="filter" style="text-align: center; margin-bottom: 15px;">
             <form id="filter-form" action="javascript:void(0);" method="GET">
                 <div style="display: inline-flex; gap: 10px; margin-bottom: 10px;">
-                    <select name="times" id="times" style="min-width: 200px;">
-                        <option value="1" {{ request('times') == '1' ? 'selected' : '' }}>-- Xếp hạng Ngày --</option>
-                        <option value="2" {{ request('times') == '2' ? 'selected' : '' }}>Xếp hạng Tuần</option>
-                        <option value="3" {{ request('times') == '3' ? 'selected' : '' }}>Xếp hạng Tháng</option>
-                    </select>
                     <select name="lm" id="lm" style="min-width: 200px;">
                         <option value="0">-- Lọc theo Liên Minh --</option>
                         <option value="1" {{ request('lm') == '1' ? 'selected' : '' }}>Liên Minh Ánh Sáng</option>
@@ -36,40 +31,13 @@
                         <option value="pagan" {{ request('class') == 'pagan' ? 'selected' : '' }}>Thầy pháp</option>
                         <option value="oracle" {{ request('class') == 'oracle' ? 'selected' : '' }}>Tiên tri</option>
                     </select>
-                </div>
-
-                <div class="dates" style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                    <div>
-                        <label for="start_date">Ngày bắt đầu:</label>
-                        <input type="date" name="start_date" id="start_date" value="{{ request('start_date') ? request('start_date') : \Illuminate\Support\Carbon::today()->toDateString() }}" required style="
-                    color-scheme: dark;
-                    filter: color: white !important;
-                    line-height: inherit;
-                    color: #979797;
-                    padding: 7px 7px 4px 10px;
-                    font-size: 12px;
-                    background-color: #191919;
-                    border: 1px solid #3e3e3e;">
-                    </div>
-                    <div>
-                        <label for="end_date">Ngày kết thúc:</label>
-                        <input type="date" name="end_date" id="end_date" value="{{ request('end_date') ? request('end_date') : \Illuminate\Support\Carbon::today()->toDateString() }}" required style="
-                    color-scheme: dark;
-                    filter: color: white !important;
-                    line-height: inherit;
-                    color: #979797;
-                    padding: 7px 7px 4px 10px;
-                    font-size: 12px;
-                    background-color: #191919;
-                    border: 1px solid #3e3e3e;">
-                    </div>
                     <input type="submit" value="Lọc" style="min-width: 70px;">
                 </div>
             </form>
         </div>
 
         <div id="ranking-content">
-            @include('rankings-guild-ajax')
+            @include('rankings-pvp-ajax')
         </div>
 
         <div class="clear"></div>
@@ -77,29 +45,6 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            // Handle date selection based on time period
-            $('#times').change(function() {
-                const today = new Date();
-                if (this.value === '2') { // Xếp hạng Tuần
-                    const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay() + (today.getDay() === 0 ? -6 : 1)));
-                    const endOfWeek = new Date(startOfWeek.getTime());
-                    endOfWeek.setDate(startOfWeek.getDate() + 6);
-
-                    $('#start_date').val(startOfWeek.toISOString().split('T')[0]);
-                    $('#end_date').val(endOfWeek.toISOString().split('T')[0]);
-                } else if (this.value === '3') { // Xếp hạng Tháng
-                    const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-                    const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-
-                    $('#start_date').val(startOfMonth.toISOString().split('T')[0]);
-                    $('#end_date').val(endOfMonth.toISOString().split('T')[0]);
-                } else {
-                    // Xếp hạng Ngày
-                    $('#start_date').val(today.toISOString().split('T')[0]);
-                    $('#end_date').val(today.toISOString().split('T')[0]);
-                }
-            });
-
             // Handle filter form submission
             $('#filter-form').submit(function(e) {
                 e.preventDefault();
@@ -107,29 +52,23 @@
             });
 
             // Handle pagination clicks
-            $(document).on('click', '.guild-paginate', function() {
+            $(document).on('click', '.pvp-paginate', function() {
                 var page = $(this).data('page');
                 loadRankingData(page);
             });
 
             function loadRankingData(page) {
-                var times = $('#times').val();
                 var lm = $('#lm').val();
                 var character_class = $('#class').val();
-                var start_date = $('#start_date').val();
-                var end_date = $('#end_date').val();
 
                 $('.loading-body').fadeIn();
 
                 $.ajax({
-                    url: '{{ route('rankings-guild') }}',
+                    url: '{{ route('rankings-pvp') }}',
                     type: 'GET',
                     data: {
-                        times: times,
                         lm: lm,
                         class: character_class,
-                        start_date: start_date,
-                        end_date: end_date,
                         page: page,
                         ajax: 1
                     },

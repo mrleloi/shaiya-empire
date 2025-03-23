@@ -1,10 +1,11 @@
 <?php
+// RankingsGuildController.php
 
 namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
 use App\Http\Controllers\DAO\RankDAO;
-use App\Models\SettingHome;
+use App\Models\SettingGeneral;
 use App\Models\SettingRankingsGuild;
 use Illuminate\Http\Request;
 
@@ -30,22 +31,28 @@ class RankingsGuildController extends Controller
     {
         $level = 0;
         $faction = 0;
-        if ($request->has('lm') && in_array(intval(Helper::clearXSS($request->lm)), [1,2])) $faction = intval(Helper::clearXSS($request->lm));
+        if ($request->has('lm') && in_array(intval(Helper::clearXSS($request->lm)), [1,2])) {
+            $faction = intval(Helper::clearXSS($request->lm));
+        }
 
         $class = 0;
-        if (isset($_REQUEST['class']) && (!empty($_REQUEST['class']) || is_numeric($_REQUEST['class']))) $class = Helper::clearXSS($_REQUEST['class']);
+        if (isset($_REQUEST['class']) && (!empty($_REQUEST['class']) || is_numeric($_REQUEST['class']))) {
+            $class = Helper::clearXSS($_REQUEST['class']);
+        }
 
         $times = 1;
-        if ($request->has('times') && in_array(intval(Helper::clearXSS($request->times)), [1,2,3])) $times = intval(Helper::clearXSS($request->times));
+        if ($request->has('times') && in_array(intval(Helper::clearXSS($request->times)), [1,2,3])) {
+            $times = intval(Helper::clearXSS($request->times));
+        }
 
         $rank_DAO = new RankDAO();
         $defaultPageSize = $this->setting->num_display;
-//        $defaultPageSize = 5;
+
         if ($defaultPageSize) {
             $defaultpage = 0;
-            $validPageSizes = array($defaultPageSize); // This determines valid values for how many results can be displayed on a page.
-            $validOrderBys = array('K1','K2','KDR'); // This determines valid values for how the results can be ordered on a page.
-            $validPageDirections = array('ASC','DESC'); // This determines valid values for how the direction results can be sorted on a page.
+            $validPageSizes = array($defaultPageSize);
+            $validOrderBys = array('K1','K2','KDR');
+            $validPageDirections = array('ASC','DESC');
 
             // Gather valid user input from the user's POST request
             $pagingData = array();
@@ -55,11 +62,9 @@ class RankingsGuildController extends Controller
             } else {
                 $pagingData['page'] = 0;
             }
-            $pagingData['pageSize'] = isset($_REQUEST['pageSize']) && (!empty($_REQUEST['page']) && is_numeric($_REQUEST['pageSize'])) && in_array($_REQUEST['pageSize'],$validPageSizes) ? Helper::clearXSS($_REQUEST['pageSize']) : Helper::clearXSS($defaultPageSize);
-//            $pagingData['pageOrder'] = isset($_REQUEST['pageOrder']) && !empty($_REQUEST['pageOrder']) && in_array($_REQUEST['pageOrder'],$validOrderBys) ? Helper::clearXSS($_REQUEST['pageOrder']) : 'K1';
-//            $pagingData['pageDirection'] = isset($_REQUEST['pageDirection']) && !empty($_REQUEST['pageDirection']) && in_array($_REQUEST['pageDirection'],$validPageDirections) ? Helper::clearXSS($_REQUEST['pageDirection']) : 'DESC';
 
-//            $pagingData['level'] = $level;
+            $pagingData['pageSize'] = isset($_REQUEST['pageSize']) && (!empty($_REQUEST['pageSize']) && is_numeric($_REQUEST['pageSize'])) && in_array($_REQUEST['pageSize'],$validPageSizes) ? Helper::clearXSS($_REQUEST['pageSize']) : Helper::clearXSS($defaultPageSize);
+
             if ($class) $pagingData['class'] = $class;
             if ($faction) $pagingData['faction'] = $faction;
 
@@ -78,11 +83,21 @@ class RankingsGuildController extends Controller
         } else {
             $listType1 = collect();
         }
-//        dd($listType1);
-        return view('rankings-guild')
-            ->with([
+
+        // Check if it's an AJAX request
+        if ($request->ajax() || $request->has('ajax')) {
+            return view('rankings-guild-ajax')->with([
                 'listType1' => $listType1,
-                'setting' => $this->setting
             ]);
+        }
+
+        // Get general settings for the title
+        $settingGeneral = SettingGeneral::query()->first();
+
+        return view('rankings-guild')->with([
+            'listType1' => $listType1,
+            'setting' => $this->setting,
+            'settingGeneral' => $settingGeneral
+        ]);
     }
 }

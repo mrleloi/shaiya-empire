@@ -113,7 +113,8 @@ class Helper
     public static $STATUS_ON = '1';
     public static $STATUS_OFF = '0';
 
-    /*public static function convertGameClass($classId)
+    /*
+     * public static function convertGameClass($classId)
     {
         switch ($classId) {
             case 0:

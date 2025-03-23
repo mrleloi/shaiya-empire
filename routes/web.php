@@ -24,10 +24,8 @@ Route::any('/pages/info.php', [\App\Http\Controllers\ServerInfoController::class
 Route::any('/pages/download.php', [\App\Http\Controllers\DownloadController::class, 'index'])->name('download');
 
 Route::any('/rank/ranking.php', [\App\Http\Controllers\RankingsPvpController::class, 'index'])->name('rankings-pvp');
-Route::any('/rank/pvpall.php', [\App\Http\Controllers\RankingsPvpController::class, 'pvpall'])->name('rankings-pvpall');
-Route::any('/rank/onlykill.php', [\App\Http\Controllers\RankingsPvpController::class, 'onlykill'])->name('rankings-onlykill');
-Route::any('/rank/pvpday.php', [\App\Http\Controllers\RankingsPvpController::class, 'pvpday'])->name('rankings-pvpday');
-Route::any('/rank/pvpweek.php', [\App\Http\Controllers\RankingsPvpController::class, 'pvpweek'])->name('rankings-pvpweek');
+Route::any('/rank/pvp-all.php', [\App\Http\Controllers\RankingsPvpController::class, 'pvpall'])->name('rankings-pvp-all');
+Route::any('/rank/guild-all.php', [\App\Http\Controllers\RankingsGuildController::class, 'index'])->name('rankings-guild');
 
 Route::any('/pages/bosstime.php', [\App\Http\Controllers\MediaController::class, 'index'])->name('media');
 
